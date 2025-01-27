@@ -2,9 +2,9 @@
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
-  const data = new FormData(event.target);
-  console.log(data.getAll('exception-name'))
-  const response = fetch('../interface-tier/*.php', {
+  const formData = new FormData(event.target);
+  console.log(formData.getAll('exception-name'))
+  const response = await fetch('http://logs-table-reader-mvc/public/home/logs', {
     method: 'POST',
     body: formData
   });

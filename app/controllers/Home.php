@@ -8,4 +8,10 @@ class Home extends Controller {
     show("from the edit function");
     $this->view('home');
   }
+
+  public function logs() {
+    if ($_POST['exception-name']) {
+      echo 'exception form data received';
+    }
+  }
 }

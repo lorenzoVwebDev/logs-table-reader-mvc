@@ -29,7 +29,7 @@
     </div>
   </section>
   <section class="footer-section"></section>
-  <script src="./src/index.js"></script>
+  <script src="<?= ROOT?>public/assets/js/home.view.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
 </body>
 </html>

@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+}
+
+:root {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.git-repository-header {
+  background-color: white;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgb(8, 144, 255);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  border-bottom: solid 1px;
+}
+.git-repository-header a {
+  color: white;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: inline-flex;
+  flex-direction: column;
+  background-color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.footer-container .footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(2.2vw + 2.2vh);
+  border-bottom: white;
+  padding-left: calc(1vw + 1vh);
+  padding-right: calc(1vw + 1vh);
+}
+.footer-container .footer-header span {
+  font-size: calc(1.1vw + 1.1vh);
+}
+.footer-container .footer-header .social-icons-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 100%;
+  gap: calc(0.9vw + 0.9vh);
+}
+.footer-container .footer-header .social-icons-container .social-icons {
+  width: calc(1vw + 1vh);
+}
+.footer-container .footer-header .social-icons-container .social-icons svg {
+  width: 100%;
+  height: 100%;
+}
+.footer-container .main-footer-section {
+  padding-left: calc(1vw + 1vh);
+  padding-right: calc(1vw + 1vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, calc(11vw + 11vh));
+  justify-content: center;
+  column-gap: 3%;
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-left h6 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: calc(0.1vw + 0.1vh);
+  text-wrap: wrap;
+  font-size: calc(0.9vw + 0.9vh);
+  margin-bottom: calc(0.2vw + 0.2vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-left p {
+  font-size: calc(0.5vw + 0.5vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-left h6 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: calc(0.1vw + 0.1vh);
+  font-size: calc(0.9vw + 0.9vh);
+  margin-bottom: calc(0.2vw + 0.2vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-left p {
+  font-size: calc(0.6vw + 0.6vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-left p a {
+  color: rgb(255, 255, 255);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-right h6 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: calc(0.1vw + 0.1vh);
+  font-size: calc(0.9vw + 0.9vh);
+  margin-bottom: calc(0.2vw + 0.2vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-right p {
+  font-size: calc(0.6vw + 0.6vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-central-right p a {
+  color: rgb(255, 255, 255);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-right :nth-child(3) {
+  font-size: calc(0.5vw + 0.5vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-right h6 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: calc(0.1vw + 0.1vh);
+  font-size: calc(0.9vw + 0.9vh);
+  margin-bottom: calc(0.2vw + 0.2vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-right p {
+  font-size: calc(0.8vw + 0.8vh);
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: calc(0.1vw + 0.1vh);
+}
+.footer-container .main-footer-section .main-footer-section-grid .main-footer-section-right p svg {
+  width: calc(1vw + 1vh);
+}
+.footer-container .low-footer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(2.2vw + 2.2vh);
+}
+.footer-container .low-footer-section span {
+  margin-right: calc(0.5vw + 0.5vh);
+  font-size: calc(1.1vw + 1.1vh);
+}
+.footer-container .low-footer-section a {
+  color: rgb(255, 255, 255);
+  font-size: calc(1.1vw + 1.1vh);
+}
+
+.logs-section {
+  display: grid;
+  grid-template-columns: repeat(3, calc(15vw + 15vh));
+  gap: calc(1.5vw + 1.5vh);
+  justify-content: center;
+  margin-top: calc(1.5vw + 1.5vh);
+}
+.logs-section .exception-container form, .logs-section .error-container form, .logs-section .access-container form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: calc(0.8vw + 0.8vh);
+}
+.logs-section .exception-container form input[type=text], .logs-section .error-container form input[type=text], .logs-section .access-container form input[type=text] {
+  width: 100%;
+  transform: scale(1.05);
+  padding-left: calc(0.2vw + 0.2vh);
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+}
+.logs-section .exception-container form input[type=text]::placeholder, .logs-section .error-container form input[type=text]::placeholder, .logs-section .access-container form input[type=text]::placeholder {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.logs-section .exception-container form input[type=submit], .logs-section .error-container form input[type=submit], .logs-section .access-container form input[type=submit] {
+  width: 80%;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  border: none;
+  background-color: rgb(8, 144, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+  box-shadow: 2px 2px 8px gray;
+  cursor: pointer;
+}
+.logs-section .exception-container form input[type=submit]:active, .logs-section .error-container form input[type=submit]:active, .logs-section .access-container form input[type=submit]:active {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(8, 144, 255);
+  color: rgb(8, 144, 255);
+}

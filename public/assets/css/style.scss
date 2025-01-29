@@ -246,7 +246,7 @@ $black-footer: rgb(23, 23, 23);
         &::placeholder {
           @include poppins-light;
         }
-      }
+      }  
       & input[type=submit] {
         width: 80%;
         @include poppins-bold;
@@ -265,6 +265,35 @@ $black-footer: rgb(23, 23, 23);
         }
       }
     }
+
+    & .exception-request-container, .error-request-container, .access-request-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: calc(1vw + 1vh);
+      & .exception-download-container, .exception-table-container, .error-download-container, .error-table-container, .access-download-container, .access-table-container {
+        display: flex;
+        justify-content: center;
+        & button {
+          @include poppins-bold;
+          border: none;
+          background-color: $blue-fb;
+          color: $white-font;
+          border-radius: 25px;
+          padding-top: calc(0.3vw + 0.3vh);
+          padding-bottom: calc(0.3vw + 0.3vh);
+          box-shadow: 2px 2px 8px gray;
+          font-size: calc(0.8vw + 0.8vh);
+          cursor: pointer;
+          &:active {
+            background-color: $white-font;
+            border: solid 1px $blue-fb;
+            color: $blue-fb;
+          }
+        }
+      }
+
+    } 
   }
 }
 

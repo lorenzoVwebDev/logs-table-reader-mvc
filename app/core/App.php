@@ -12,11 +12,13 @@ class App {
   public function loadController() {
     $URL = $this->splitURL();
     //ucfirst is used to capitalize the first letter of a string
+/*     print_r($URL); */
     $filename = "../app/controllers/".ucfirst($URL[0]).".php";
     if (file_exists($filename)) {
       require($filename);
       $this->controller = ucfirst($URL[0]);
       unset($URL[0]);
+/*       show($URL); */
     } else {
       $filename = '../app/controllers/_404.php';
       require($filename);
@@ -31,7 +33,6 @@ class App {
         unset($URL[1]);
       }
     }
-  
     
     //this method below is used to call a function in the first argument (the array first value is the instance of the class, the second is the instance's method's name), the second argument is an array containing all of the called method's arguments
     call_user_func_array([$controller, $this->method], $URL);

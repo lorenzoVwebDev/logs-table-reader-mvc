@@ -1,55 +1,53 @@
 <?php
 class Model {
+  private string $log_message; 
+  private string $log_type; 
   use Database;
   
-  protected $table = 'third_table';
-  protected $limit = 3;
-  protected $offset = 0;
-  //$data and $data_not are two arrays that will be used to make the query where $data is used for the positive evaluation (ex: id = :id) and $data_not for the negative evaluation (ex: id != :id)
-  public function where($data, $data_not = []) {
-    //SECOND WAY OF HANDLING THE SELECT QUERY
-    //We are now going to create the query by using the method's arguments $data an $data_not to retrive the conditions of the query 
-    //We create two arrays from both the $data and the $data_not; array_keys() creates and array containing the keys of the given array as values
-    $keys = array_keys($data);
-    $keys_not = array_keys($data_not);
-    $query = "select * from $this->table where ";
-
-    foreach ($keys as $key) {
-      $query .= $key ." = :". $key ." && ";
-    }
-
-    foreach ($keys_not as $key) {
-      $query .= $key . " != :". $key ." && ";
-    } 
-    //trim() cuts the string given in its second arguments from the hard left and hard right of the string given in the first argument
-    $query = trim($query, " && ");
-    //The "limit" clause specifies the number off rows to be returned from a table, The "offset" clause specifies the row that the extraction must start from
-    $query .= " limit $this->limit offset $this->offset";
-
-    //echo $query;
-
-    //echo $this->query($query);
-    //FIRST WAY OF HANDLING THE QUERY
-
-    //the :id placeholder represents a variable in a query
-    //$query = "select * from $this->table where id = :id";
-    //in the second parameter of the query() method we have to pass the $data argument that will be used by $check = $stm->execute($data); to convert the placeholder :id in the data specified within the associative array below
-    return $this->query($query, $data);
+  function __construct($log_message, $log_type) {
+    $this->log_message = $log_message;
+    $this->log_type = $log_type;
   }
   
-  public function first($data) {
+  function logException() {
+    try {
+      $date = date('m.d.Y h:i:s');
+      $error_log = $date." | User Error | ".$this->log_message."\n";
+      define('USER_ERROR_LOG', LOGS."\\exceptions\\". date('mdy').".log");
+      error_log($error_log, 3, USER_ERROR_LOG);
 
-  }
+      $logFile = fopen(LOGS."\\exceptions\\".date('mdy').".log", 'r'); 
 
-  public function insert($data) {
+      if (isset($logFile)) {
+        $logsArray = [];
+        $row_count = 0;
+        while (!feof($logFile)) {
+          $logsArray[$row_count] = explode(' | ', fgets($logFile));
+          $row_count++;
+        }
+        $row_count--;
+        unset($logsArray[$row_count]);
+        fclose($logFile);
+        if (trim($logsArray[count($logsArray) - 1][2]) === trim($this->log_message)) {
+          $last_log_message = trim($logsArray[count($logsArray) - 1][2]);
+          unset($logsArray);
+          return $last_log_message;
+        } else {
+          http_response_status(500);
+          header('Content-Type: text/plain');
+          echo 'Error: We are going to fix it as soon as possible';
+          throw new Exception('The exception has not been logged');
+        }
+      } else {
+        http_response_status(500);
+        header('Content-Type: text/plain');
+        echo 'Error: We are going to fix it as soon as possible';
+        throw new Exception(date('mdy')."Exception log file not found");
+      }
 
-  }
 
-  public function update($id, $data, $id_column = 'id') {
-
-  }
-
-  public function delete($id, $id_column = 'id') {
-
+    } catch (Exception $e) {
+      $e->getMessage();
+    }
   }
 }

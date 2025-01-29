@@ -12,24 +12,27 @@
     <div class="exception-container">
       <form method="post" id="exception-form">
         <input type="text" name="exception-name" minlength="3" maxlength="20" placeholder="insert exception name" pattern="[A-Za-z0-9]+" required/>
+        <input type="hidden" name="type" id="type" value="exception"/>
         <input type="submit"/>
       </form>
     </div>
     <div class="error-container">
       <form method="post" id="error-form">
         <input type="text" name="error-name" minlength="3" maxlength="20" pattern="" placeholder="insert error name" pattern="[A-Za-z0-9]+" required/>
+        <input type="hidden" name="type" id="type" value="error"/>
         <input type="submit"/>
       </form>
     </div>
     <div class="access-container">
       <form method="post" id="access-form">
         <input type="text" name="access-name" minlength="3" maxlength="20" placeholder="insert access name" pattern="[A-Za-z0-9]+" required/>
+        <input type="hidden" name="type" id="type" value="error"/>
         <input type="submit"/>
       </form>
     </div>
   </section>
   <section class="footer-section"></section>
-  <script src="<?= ROOT?>public/assets/js/home.view.js"></script>
+  <script src="<?= ROOT?>public/assets/js/view/home.view.js" type="module"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
 </body>
 </html>

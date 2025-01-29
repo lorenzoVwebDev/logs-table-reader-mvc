@@ -25,7 +25,23 @@ class Logs extends Controller {
         throw new Exception('exception-name POST variable is empty');
       }
       } catch (Exception $e) {
-        print $e->getMessage();
+        require_once(__DIR__ ."\\..\\models\\logs.model.php");
+        $exception = new Logs_model($e->getMessage(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
       }
     } 
+
+  function error() {
+    try {
+      if (isset($_POST['error-name']) && isset($_POST['type'])) {
+        $message = filter_var($_POST['error-name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $type = $_POST['type'];
+        $model = new Model($message, $type);
+        $last_log_message = $model->logError();
+      }
+    } catch (Exception $e) {
+      $e->getMessage();
+    }
+  }
 }

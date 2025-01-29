@@ -18,7 +18,7 @@
     </div>
     <div class="error-container">
       <form method="post" id="error-form">
-        <input type="text" name="error-name" minlength="3" maxlength="20" pattern="" placeholder="insert error name" pattern="[A-Za-z0-9]+" required/>
+        <input type="text" name="error-name" minlength="3" maxlength="20" placeholder="insert error name" pattern="[A-Za-z0-9]+" required/>
         <input type="hidden" name="type" id="type" value="error"/>
         <input type="submit"/>
       </form>

@@ -86,8 +86,6 @@ class Logs_model {
         echo 'Error: We are going to fix it as soon as possible';
         throw new Exception(date('mdy')."Exception log file not found");
       }
-
-
     } catch (Exception $e) {
       $e->getMessage();
     }

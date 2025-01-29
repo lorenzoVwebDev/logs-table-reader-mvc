@@ -39,9 +39,26 @@ class Logs extends Controller {
         $type = $_POST['type'];
         $model = new Model($message, $type);
         $last_log_message = $model->logError();
+        if (isset($last_log_message) && $last_log_message === $message) {
+          $response['status'] = 'completed';
+          $response['logType'] = $type;
+          $response['log'] = $last_log_message;
+          http_response_code(200);
+          header('Content-Type: application/json');
+          echo json_encode($response);
+          unset($model);
+        }
+      } else {
+        http_response_status(401);
+        header('Content-Type: text/plain');
+        echo 'Bad request: No message has been submitted';
+        throw new Exception('error-name POST variable is empty');
       }
     } catch (Exception $e) {
-      $e->getMessage();
+      require_once(__DIR__ ."\\..\\models\\logs.model.php");
+      $exception = new Logs_model($e->getMessage(), 'exception');
+      $last_log_message = $exception->logException();
+      unset($exception);
     }
   }
 }

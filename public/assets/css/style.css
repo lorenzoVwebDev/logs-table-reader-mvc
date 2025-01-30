@@ -11,6 +11,15 @@
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .git-repository-header {
@@ -37,10 +46,11 @@
   -webkit-text-stroke-color: black;
 }
 
+.main-section {
+  flex: 1;
+}
+
 .footer-container {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
   display: inline-flex;
   flex-direction: column;
   background-color: rgb(23, 23, 23);
@@ -256,4 +266,36 @@
   background-color: rgb(255, 255, 255);
   border: solid 1px rgb(8, 144, 255);
   color: rgb(8, 144, 255);
+}
+
+.table-section {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+.table-section .exception-table-container, .table-section .error-table-container, .table-section .access-table-container {
+  width: 80%; /* Full width */
+  border-collapse: collapse; /* Removes spacing between borders */
+  margin: 20px 0; /* Adds some spacing around the table */
+  font-size: 16px; /* Makes text readable */
+  text-align: left; /* Aligns text to the left */
+  background-color: #f9f9f9; /* Light background */
+}
+.table-section .exception-table-container th, .table-section .error-table-container th, .table-section .access-table-container th {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 12px; /* Adds space inside headers */
+  text-transform: uppercase; /* Makes header text uppercase */
+  text-align: center;
+}
+.table-section .exception-table-container td, .table-section .error-table-container td, .table-section .access-table-container td {
+  padding: 10px; /* Adds spacing inside table cells */
+  border-bottom: 1px solid #ddd; /* Adds a subtle border */
+  text-align: center;
+}
+.table-section .exception-table-container tr:nth-child(even), .table-section .error-table-container tr:nth-child(even), .table-section .access-table-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.table-section .exception-table-container tr:hover, .table-section .error-table-container tr:hover, .table-section .access-table-container tr:hover {
+  background-color: #ddd;
 }

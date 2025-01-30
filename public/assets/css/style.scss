@@ -46,6 +46,15 @@ $black-footer: rgb(23, 23, 23);
 
 :root {
   @include poppins-regular;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .git-repository-header {
   background-color: white;
@@ -67,10 +76,10 @@ $black-footer: rgb(23, 23, 23);
   border-bottom: solid 1px;
 }
  
+.main-section {
+  flex: 1;
+}
 .footer-container {
-    position: absolute;
-    bottom: 0px;
-    left: 0px; 
     display: inline-flex;
     flex-direction: column;
     background-color: $black-footer;
@@ -293,7 +302,41 @@ $black-footer: rgb(23, 23, 23);
         }
       }
 
-    } 
+    }  
   }
+}
+
+.table-section {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  & .exception-table-container, .error-table-container, .access-table-container {
+   width: 80%; /* Full width */
+    border-collapse: collapse; /* Removes spacing between borders */
+    margin: 20px 0; /* Adds some spacing around the table */
+    font-size: 16px; /* Makes text readable */
+    text-align: left; /* Aligns text to the left */
+    background-color: #f9f9f9; /* Light background */
+    & th {
+      background-color: #4CAF50; /* Green background */
+      color: white; /* White text */
+      padding: 12px; /* Adds space inside headers */
+      text-transform: uppercase; /* Makes header text uppercase */
+      text-align: center;
+    }
+    & td {
+      padding: 10px; /* Adds spacing inside table cells */
+      border-bottom: 1px solid #ddd; /* Adds a subtle border */
+      text-align: center;
+    }
+
+    & tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    
+    & tr:hover {
+      background-color: #ddd;
+    }
+  } 
 }
 

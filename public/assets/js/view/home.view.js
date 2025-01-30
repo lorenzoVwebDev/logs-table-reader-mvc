@@ -1,5 +1,6 @@
 import { appendChild } from '../utils/append.element.js';
 import { downloadLogFile } from '../services/download.logfile.js'
+import { downloadTable } from '../services/download.table.js'
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
@@ -17,7 +18,7 @@ document.addEventListener('submit', async (event) => {
     const displayBool = appendChild(result);
     if (!displayBool) throw new Error("Error 404");
     downloadLogFile(type);
-
+    downloadTable(type);
   } else if (response.status >= 400 && response.status < 500 ){
     const error = response;
     throw new Error(response);

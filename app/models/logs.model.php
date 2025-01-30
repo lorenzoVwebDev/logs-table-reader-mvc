@@ -33,16 +33,16 @@ class Logs_model {
           unset($logsArray);
           return $last_log_message;
         } else {
-          http_response_status(500);
-          header('Content-Type: text/plain');
-          echo 'Error: We are going to fix it as soon as possible';
-          throw new Exception('The exception has not been logged');
+          return array(
+            0 => 500,
+            1 => 'The exception has not been logged'
+          );
         }
       } else {
-        http_response_status(500);
-        header('Content-Type: text/plain');
-        echo 'Error: We are going to fix it as soon as possible';
-        throw new Exception(date('mdy')."Exception log file not found");
+        return array(
+          0 => 500, 
+          1 => date('mdy')."Exception log file not found"
+        );
       }
 
 
@@ -75,16 +75,16 @@ class Logs_model {
           unset($logsArray);
           return $last_log_message;
         } else {
-          http_response_status(500);
-          header('Content-Type: text/plain');
-          echo 'Error: We are going to fix it as soon as possible';
-          throw new Exception('The exception has not been logged');
+          return array(
+            0 => 500,
+            1 => 'The error has not been logged'
+          );
         }
       } else {
-        http_response_status(500);
-        header('Content-Type: text/plain');
-        echo 'Error: We are going to fix it as soon as possible';
-        throw new Exception(date('mdy')."Exception log file not found");
+        return array(
+          0 => 500, 
+          1 => date('mdy')."Error log file not found"
+        );
       }
     } catch (Exception $e) {
       $e->getMessage();
@@ -117,11 +117,17 @@ class Logs_model {
             unset($logsArray);
             return $last_log_message;
           } else {
-            http_response_code(500);
-            header('Content-Type: text/plain');
-            echo 'Error: We are going to fix it as soon as possible';
+            return array(
+              0 => 500,
+              1 => 'The access has not been logged'
+            );
           } 
         }
+      } else {
+        return array(
+          0 => 500, 
+          1 => date('mdy')."Access log file not found"
+        );
       }
     } catch (Exception $e) {
       $e->getMessage();

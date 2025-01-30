@@ -26,7 +26,7 @@
     <div class="access-container">
       <form method="post" id="access-form">
         <input type="text" name="access-name" minlength="3" maxlength="20" placeholder="insert access name" pattern="[A-Za-z0-9]+" required/>
-        <input type="hidden" name="type" id="type" value="error"/>
+        <input type="hidden" name="type" id="type" value="access"/>
         <input type="submit"/>
       </form>
     </div>

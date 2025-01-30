@@ -6,7 +6,7 @@ export function downloadLogFile(type) {
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${dayjs().format('DDMMYY')}error_logs.log`;
+  a.download = `${dayjs().format('DDMMYY')}${type}_logs.log`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

@@ -5,6 +5,7 @@ document.addEventListener('submit', async (event) => {
   try {
   const formData = new FormData(event.target);
   const type = formData.getAll('type')[0];
+  console.log(type)
 /*   console.log(formData.getAll('exception-name')) */
   const response = await fetch(`http://logs-table-reader-mvc/public/logs/${type}`, {
     method: 'POST',

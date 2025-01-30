@@ -4,7 +4,7 @@ class Logs_model {
   private string $log_message; 
   private string $log_type; 
   
-  function __construct($log_message, $log_type) {
+  function __construct(string $log_message,string $log_type) {
     $this->log_message = $log_message;
     $this->log_type = $log_type;
   }
@@ -85,6 +85,43 @@ class Logs_model {
         header('Content-Type: text/plain');
         echo 'Error: We are going to fix it as soon as possible';
         throw new Exception(date('mdy')."Exception log file not found");
+      }
+    } catch (Exception $e) {
+      $e->getMessage();
+    }
+  }
+
+  function logAccess() {
+    try {
+      $date = date('m.d.Y h:i:s');
+      $access_log = $date . " | access | " . $this->log_message . "\n";
+      define('ACCESS_LOG', LOGS . "\\access\\". date('mdy'). ".log");
+      $logFile = fopen(ACCESS_LOG, "a");
+      if (isset($logFile)) {
+        fwrite($logFile, $access_log);
+        fclose($logFile);
+        unset($logFile);
+        $logFile = fopen(ACCESS_LOG, "r");
+        if (isset($logFile)) {
+          $logsArray = [];
+          $row_count = 0;
+          while (!feof($logFile)) {
+            $logsArray[$row_count] = explode(" | ", fgets($logFile));
+            $row_count++;
+          }
+          $row_count--;
+          unset($logsArray[$row_count]);
+          fclose($logFile);  
+          if (trim($logsArray[count($logsArray)-1][2]) === trim($this->log_message)) {
+            $last_log_message = trim($logsArray[count($logsArray)-1][2]);
+            unset($logsArray);
+            return $last_log_message;
+          } else {
+            http_response_code(500);
+            header('Content-Type: text/plain');
+            echo 'Error: We are going to fix it as soon as possible';
+          } 
+        }
       }
     } catch (Exception $e) {
       $e->getMessage();

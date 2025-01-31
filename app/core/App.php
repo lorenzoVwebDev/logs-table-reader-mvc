@@ -5,7 +5,6 @@ class App {
   public function splitURL() {
     //.htaccess put every written url in the 'url' value of the _GET super global array
     $URL = $_GET['url'] ?? 'home';
-    print_r($_GET);
     $URL = explode("/", $URL);
     return $URL;
   }

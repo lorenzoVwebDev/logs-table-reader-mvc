@@ -30,7 +30,7 @@ class Table_view {
         
         return $htmlstring;
     } catch (Exception $e) {
-      require_once(__DIR__ ."\\..\\models\\logs.model.php");
+      require_once(__DIR__ ."//..//models//logs.model.php");
       $exception = new Logs_model($e->getMessage(), 'exception');
       $exception->logException();
       return $exception;

@@ -8,7 +8,7 @@ document.addEventListener('submit', async (event) => {
   const type = formData.getAll('type')[0];
   console.log(type)
 /*   console.log(formData.getAll('exception-name')) */
-  const response = await fetch(`http://logs-table-reader-mvc/public/logs/${type}`, {
+  const response = await fetch(`https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/logs/${type}`, {
     method: 'POST',
     body: formData
   });

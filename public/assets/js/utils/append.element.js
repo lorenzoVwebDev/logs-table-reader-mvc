@@ -24,3 +24,19 @@ export function appendChild(response) {
   }
 
 }
+
+export function appendDelete(table) {
+  const tBodyHtmlCollection = table.children[0].children[0].children;
+  let rowsArray = Array.from(tBodyHtmlCollection);
+  rowsArray.forEach((value, index) => {
+    if (index != 0) {
+      const newValue = document.createElement('td');
+      newValue.innerHTML = '<button class="delete-log">Delete</button>';
+      value.append(newValue)
+    } else {
+      const newValueHeader = document.createElement('th');
+      newValueHeader.style.backgroundColor = '#4CAF50';
+      value.append(newValueHeader)
+    }
+  })
+}

@@ -1,13 +1,12 @@
 import { appendChild } from '../utils/append.element.js';
 import { downloadLogFile } from '../services/download.logfile.js'
 import { downloadTable } from '../services/download.table.js'
+
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
   const formData = new FormData(event.target);
   const type = formData.getAll('type')[0];
-  console.log(type)
-/*   console.log(formData.getAll('exception-name')) */
   const response = await fetch(`http://logs-table-reader-mvc/public/logs/${type}`, {
     method: 'POST',
     body: formData

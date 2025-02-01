@@ -337,6 +337,26 @@ $black-footer: rgb(23, 23, 23);
     & tr:hover {
       background-color: #ddd;
     }
+
+    & .delete-log {
+      @include poppins-bold;
+      border: none;
+      background-color: red;
+      color: $white-font;
+      border-radius: 25px;
+      padding-top: calc(0.3vw + 0.3vh);
+      padding-bottom: calc(0.3vw + 0.3vh);
+      box-shadow: 2px 2px 8px gray;
+      font-size: calc(0.6vw + 0.6vh);
+      padding-right: calc(0.3vw + 0.3vh);
+      padding-left: calc(0.3vw + 0.3vh);
+      cursor: pointer;
+      &:active {
+        background-color: white;
+        border: solid 1px red;
+        color: red;
+      }
+    }
   } 
 }
 

@@ -13,10 +13,10 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $error_log = $date." | User Error | ".$this->log_message."\n";
-      define('USER_ERROR_LOG', LOGS."//exceptions//". date('mdy').".log");
+      define('USER_ERROR_LOG', LOGS."\\exceptions\\". date('mdy').".log");
       error_log($error_log, 3, USER_ERROR_LOG);
 
-      $logFile = fopen(LOGS."//exceptions//".date('mdy').".log", 'r'); 
+      $logFile = fopen(LOGS."\\exceptions\\".date('mdy').".log", 'r'); 
 
       if (isset($logFile)) {
         $logsArray = [];
@@ -55,10 +55,10 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $error_log = $date." | System Error | ".$this->log_message."\n";
-      define('SYSTEM_ERROR_LOG', LOGS."//errors//". date('mdy').".log");
+      define('SYSTEM_ERROR_LOG', LOGS."\\errors\\". date('mdy').".log");
       error_log($error_log, 3, SYSTEM_ERROR_LOG);
 
-      $logFile = fopen(LOGS."//errors//".date('mdy').".log", 'r'); 
+      $logFile = fopen(LOGS."\\errors\\".date('mdy').".log", 'r'); 
 
       if (isset($logFile)) {
         $logsArray = [];
@@ -95,7 +95,7 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $access_log = $date . " | access | " . $this->log_message . "\n";
-      define('ACCESS_LOG', LOGS . "//access//". date('mdy'). ".log");
+      define('ACCESS_LOG', LOGS . "\\access\\". date('mdy'). ".log");
       $logFile = fopen(ACCESS_LOG, "a");
       if (isset($logFile)) {
         fwrite($logFile, $access_log);

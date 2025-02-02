@@ -6,13 +6,13 @@ class Download extends Controller {
       if (isset($_GET['type']) && $_GET['type'] === $type) {
         switch ($type) {
           case 'exception':
-            $log_file = LOGS."//exceptions//". date('mdy').".log";
+            $log_file = LOGS."\\exceptions\\". date('mdy').".log";
             break;
           case 'error':
-            $log_file = LOGS."//errors//". date('mdy').".log";
+            $log_file = LOGS."\\errors\\". date('mdy').".log";
             break;
           case 'access':
-            $log_file = LOGS."//access//". date('mdy').".log";
+            $log_file = LOGS."\\access\\". date('mdy').".log";
             break;
         } 
   

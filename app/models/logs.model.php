@@ -141,9 +141,9 @@ class Logs_model {
       if ($type === 'exception' || $type === 'errors') {
         $type = $type.'s';
       }
-      define(strtoupper($type)."_LOG", LOGS."//$type//".date('mdy').".log");
-      if (file_exists(EXCEPTIONS_LOG)) {
-        $logFile = fopen(EXCEPTIONS_LOG, 'r');
+      define("ANY"."_LOG", LOGS."//$type//".date('mdy').".log");
+      if (file_exists(ANY_LOG)) {
+        $logFile = fopen(ANY_LOG, 'r');
         $logsArray = [];
         $row_count = 0;
         while (!feof($logFile)) {
@@ -156,7 +156,7 @@ class Logs_model {
         unset($logFile);
         
         if(isset($logsArray)) {
-          $logFile = fopen(EXCEPTIONS_LOG, 'w');
+          $logFile = fopen(ANY_LOG, 'w');
           for ($J = $index; $J < $row_count - 1; $J++) {
             if ($logsArray[$J][0] !== '' && $logsArray[$J][1] !== '' && $logsArray[$J][2] !== '') {
               $logsArray[$J] = $logsArray[$J+1];

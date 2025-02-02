@@ -2,6 +2,7 @@ import { appendTable } from '../utils/append.element.js';
 import { downloadLogFile } from '../services/download.logfile.js';
 import { deleteLog } from '../services/deleteLog.logfile.js';
 import { downloadTable } from '../services/download.table.js';
+
 const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
 const local = 'http://logs-table-reader-mvc/public/'
 document.addEventListener('submit', async (event) => {
@@ -23,7 +24,7 @@ document.addEventListener('submit', async (event) => {
       downloadTable(type, resolve, reject);
     }).then(() => {
       deleteLog(type);
-      
+      //
 
     }).catch((error) => {
       throw new Error(error);

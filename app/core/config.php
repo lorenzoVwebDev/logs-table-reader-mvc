@@ -16,7 +16,7 @@ if ($_SERVER['SERVER_NAME'] == 'logs-table-reader-mvc') {
 } else {
   /*   we can use this ROOT constant in a index.php file to define a path <a href="<?= ROOT ?>path/to/page">Click Here</a>; The <?= ROOT?> syntax is a shorthand for <php? echo ROOT; ?>*/
   define('LOGS', __DIR__."//..//..//". "logs");
-  define('ROOT', 'https://apachebackend.lorenzo-viganego.com/');
+  define('ROOT', 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/');
   define('DBHOST', 'localhost');
   define('DBNAME', 'lorenzo1');
   define('DBUSER', 'root');

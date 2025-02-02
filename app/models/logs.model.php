@@ -16,7 +16,7 @@ class Logs_model {
       define('USER_ERROR_LOG', LOGS."\\exceptions\\". date('mdy').".log");
       error_log($error_log, 3, USER_ERROR_LOG);
 
-      $logFile = fopen(LOGS."\\exceptions\\".date('mdy').".log", 'r'); 
+      $logFile = fopen(LOGS."//exceptions//".date('mdy').".log", 'r'); 
 
       if (isset($logFile)) {
         $logsArray = [];

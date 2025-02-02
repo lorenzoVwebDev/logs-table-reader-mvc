@@ -1,11 +1,13 @@
-import { appendDelete } from '../utils/append.element';
+import { appendDelete } from '../utils/append.element.js';
 import { deleteLog } from './deleteLog.logfile.js';
+const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
+const local = 'http://logs-table-reader-mvc/public/'
 
 export function downloadTable(type, resolve = false, reject = false){
   let tableBool = false;
   document.querySelector(`.${type}-table-button`).addEventListener('click', async (event) => {
     document.querySelector('.table-section').innerHTML = '';
-    const response = await fetch(`http://logs-table-reader-mvc/public/logs/table?type=${type}`)
+    const response = await fetch(`${server}logs/table?type=${type}`)
 
     if (response.status >= 200 && response.status < 400) {
       tableBool = true;
@@ -29,7 +31,7 @@ export function downloadTable(type, resolve = false, reject = false){
 export async function downloadTable2(type) {
   let tableBool = false;
   document.querySelector('.table-section').innerHTML = '';
-  const response = await fetch(`http://logs-table-reader-mvc/public/logs/table?type=${type}`)
+  const response = await fetch(`${server}logs/table?type=${type}`)
 
   if (response.status >= 200 && response.status < 400) {
     tableBool = true;;

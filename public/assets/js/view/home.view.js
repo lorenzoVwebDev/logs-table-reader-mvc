@@ -22,7 +22,7 @@ document.addEventListener('submit', async (event) => {
       downloadTable(type, resolve, reject);
     }).then(() => {
       deleteLog(type);
-      
+      //
 
     }).catch((error) => {
       throw new Error(error);

@@ -1,10 +1,10 @@
 # [Logs Table Reader](https://www.lorenzo-viganego.com/#portfolio)
-  A web application based on an mvc framework that is able to log inputs, download log files and SSR a table by reading the log file 
+  A web application based on a mvc framework that is able to log inputs, download log files and SSR a table by reading the log file 
 ![Features](https://img.shields.io/badge/Features-My%20frontend's%20features-green)
 
-- [MVC structure to manage response, data CRUD operations an Server Side Rendering](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app)
-- [Cascade core PHP files to easily handle every Controller and the requested method by the URL resource identifier](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/blob/master/app/core/init.php)
-- [Controller section that manage requests and responses](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app/controllers)
+- [MVC structure to manage requests/responses, data CRUD operations and Server Side Rendering](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app)
+- [Cascade core PHP file to easily handle every Controllers and the requested method by the URL resource identifier](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/blob/master/app/core/init.php)
+- [Controller section that manages requests and responses](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app/controllers)
 - [Model section that manages CRUD data operations](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app/models)
 - [View section that manages SSR](https://github.com/lorenzoVwebDev/logs-table-reader-mvc/tree/master/app/views)
 # Connect with me

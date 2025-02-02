@@ -1,8 +1,10 @@
 import "https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js";
+const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
+const local = 'http://logs-table-reader-mvc/public/'
 export function downloadLogFile(type) {
  document.querySelector(`.${type}-download-button`).addEventListener('click', async (event) => {
   console.log('hello')
-  const blob = await fetch(`http://logs-table-reader-mvc/public/download/downloadlogs/${type}?type=${type}`).then((response) => response.blob());
+  const blob = await fetch(`${server}download/downloadlogs/${type}?type=${type}`).then((response) => response.blob());
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

@@ -1,4 +1,6 @@
-import { downloadTable2 } from './download.table';
+import { downloadTable2 } from './download.table.js';
+const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
+const local = 'http://logs-table-reader-mvc/public/'
 
 export function deleteLog(type) {
   document.querySelectorAll('.delete-log').forEach(element => {
@@ -8,7 +10,7 @@ export function deleteLog(type) {
         index: element.dataset.index,
         type: type
       }
-      const response = await fetch('http://logs-table-reader-mvc/public/logs/deletelog', {
+      const response = await fetch(`${server}logs/deletelog`, {
         method: "POST",
         body: JSON.stringify(bodyObject),
         headers: {

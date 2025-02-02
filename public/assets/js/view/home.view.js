@@ -2,13 +2,15 @@ import { appendTable } from '../utils/append.element.js';
 import { downloadLogFile } from '../services/download.logfile.js';
 import { deleteLog } from '../services/deleteLog.logfile.js';
 import { downloadTable } from '../services/download.table.js';
-//
+
+const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
+const local = 'http://logs-table-reader-mvc/public/'
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
   const formData = new FormData(event.target);
   const type = formData.getAll('type')[0];
-  const response = await fetch(`http://logs-table-reader-mvc/public/logs/${type}`, {
+  const response = await fetch(`${server}logs/${type}`, {
     method: 'POST',
     body: formData
   });

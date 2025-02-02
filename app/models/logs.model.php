@@ -13,10 +13,10 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $error_log = $date." | User Error | ".$this->log_message."\n";
-      define('USER_ERROR_LOG', LOGS."\\exceptions\\". date('mdy').".log");
+      define('USER_ERROR_LOG', LOGS."//exceptions//". date('mdy').".log");
       error_log($error_log, 3, USER_ERROR_LOG);
 
-      $logFile = fopen(LOGS."\\exceptions\\".date('mdy').".log", 'r'); 
+      $logFile = fopen(LOGS."//exceptions//".date('mdy').".log", 'r'); 
 
       if (isset($logFile)) {
         $logsArray = [];
@@ -55,10 +55,10 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $error_log = $date." | System Error | ".$this->log_message."\n";
-      define('SYSTEM_ERROR_LOG', LOGS."\\errors\\". date('mdy').".log");
+      define('SYSTEM_ERROR_LOG', LOGS."//errors//". date('mdy').".log");
       error_log($error_log, 3, SYSTEM_ERROR_LOG);
 
-      $logFile = fopen(LOGS."\\errors\\".date('mdy').".log", 'r'); 
+      $logFile = fopen(LOGS."//errors//".date('mdy').".log", 'r'); 
 
       if (isset($logFile)) {
         $logsArray = [];
@@ -95,7 +95,7 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $access_log = $date . " | access | " . $this->log_message . "\n";
-      define('ACCESS_LOG', LOGS . "\\access\\". date('mdy'). ".log");
+      define('ACCESS_LOG', LOGS . "//access//". date('mdy'). ".log");
       $logFile = fopen(ACCESS_LOG, "a");
       if (isset($logFile)) {
         fwrite($logFile, $access_log);
@@ -138,12 +138,12 @@ class Logs_model {
     try {    $type = $this->log_type;
       $index = (int)$index;
       $index--;
-      if ($type === 'exception' || $type === 'errors') {
+      if ($type === 'exception' || $type === 'error') {
         $type = $type.'s';
       }
-      define(strtoupper($type)."_LOG", LOGS."//$type//".date('mdy').".log");
-      if (file_exists(EXCEPTIONS_LOG)) {
-        $logFile = fopen(EXCEPTIONS_LOG, 'r');
+      define("ANY"."_LOG", LOGS."//$type//".date('mdy').".log");
+      if (file_exists(ANY_LOG)) {
+        $logFile = fopen(ANY_LOG, 'r');
         $logsArray = [];
         $row_count = 0;
         while (!feof($logFile)) {
@@ -154,9 +154,8 @@ class Logs_model {
         $row_count--;
         fclose($logFile);
         unset($logFile);
-        
-        if(isset($logsArray)) {
-          $logFile = fopen(EXCEPTIONS_LOG, 'w');
+        if(isset($logsArray)&&(count($logsArray)>1)) {
+          $logFile = fopen(ANY_LOG, 'w');
           for ($J = $index; $J < $row_count - 1; $J++) {
             if ($logsArray[$J][0] !== '' && $logsArray[$J][1] !== '' && $logsArray[$J][2] !== '') {
               $logsArray[$J] = $logsArray[$J+1];
@@ -178,8 +177,14 @@ class Logs_model {
             fclose($logFile);
             unset($logsArray);
             unset($logFIle);
-            return 'log deleted';
+            return 'log deleted'; 
           } 
+        } else {
+          $logFile = fopen(ANY_LOG, 'w');
+          fclose($logFile);
+          unset($logsArray);
+          unset($logFIle);
+          return 'log deleted'; 
         }
   
       }

@@ -25,7 +25,7 @@ class Logs extends Controller {
         throw new Exception('exception-name POST variable is empty');
       }
       } catch (Exception $e) {
-        require_once(__DIR__ ."\\..\\models\\logs.model.php");
+        require_once(__DIR__ ."//..//models//logs.model.php");
         $exception = new Logs_model($e->getMessage(), 'exception');
         $last_log_message = $exception->logException();
         unset($exception);
@@ -57,7 +57,7 @@ class Logs extends Controller {
         throw new Exception('error-name POST variable is empty');
       }
     } catch (Exception $e) {
-      require_once(__DIR__ ."\\..\\models\\logs.model.php");
+      require_once(__DIR__ ."//..//models//logs.model.php");
       $exception = new Logs_model($e->getMessage(), 'exception');
       $last_log_message = $exception->logException();
       unset($exception);
@@ -93,7 +93,7 @@ class Logs extends Controller {
       }
 
     } catch (Exception $e) {
-      require_once(__DIR__ ."\\..\\models\\logs.model.php");
+      require_once(__DIR__ ."//..//models//logs.model.php");
       $exception = new Logs_model($e->getMessage(), 'exception');
       $last_log_message = $exception->logException();
       unset($exception);
@@ -109,8 +109,8 @@ class Logs extends Controller {
         if ($event_array === "log file not found" && $event_array === 'logs_array.model.php not found') {
           throw new Exception($event_array, 500);
         } else {
-          if (file_exists(__DIR__."\\..\\views\\table.view.php")) {
-            require(__DIR__."\\..\\views\\table.view.php");
+          if (file_exists(__DIR__."//..//views//table.view.php")) {
+            require(__DIR__."//..//views//table.view.php");
             $tableInstance = new Table_view($event_array, $type);
             $table = $tableInstance->createTable();
             if ($table != strip_tags($table)) {
@@ -126,7 +126,7 @@ class Logs extends Controller {
         }
       }
     } catch (Exception $e) {
-      require_once(__DIR__ ."\\..\\models\\logs.model.php");
+      require_once(__DIR__ ."//..//models//logs.model.php");
       $exception = new Logs_model($e->getMessage(), 'exception');
       $last_log_message = $exception->logException();
       unset($exception);
@@ -149,9 +149,12 @@ class Logs extends Controller {
         $type = $data['type'];
         $model = new Model();
         $deleted_log = $model->logEvent($index, $type, 'delete');
+
         if ($deleted_log instanceof Exception) {
-          throw new Excepction($deleted_log->getMessage());
+          print $deleted_log;
+          throw new Exception();
         } else {
+
           http_response_code(200);
           header('Content-Type: application/json');
           $response['result'] = $deleted_log;

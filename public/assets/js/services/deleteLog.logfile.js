@@ -10,7 +10,7 @@ export function deleteLog(type) {
         index: element.dataset.index,
         type: type
       }
-      const response = await fetch(`${server}logs/deletelog`, {
+      const response = await fetch(`${local}logs/deletelog`, {
         method: "POST",
         body: JSON.stringify(bodyObject),
         headers: {

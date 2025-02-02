@@ -9,7 +9,7 @@ document.addEventListener('submit', async (event) => {
   try {
   const formData = new FormData(event.target);
   const type = formData.getAll('type')[0];
-  const response = await fetch(`${server}logs/${type}`, {
+  const response = await fetch(`${local}logs/${type}`, {
     method: 'POST',
     body: formData
   });

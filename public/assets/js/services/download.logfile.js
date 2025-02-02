@@ -4,7 +4,7 @@ const local = 'http://logs-table-reader-mvc/public/'
 export function downloadLogFile(type) {
  document.querySelector(`.${type}-download-button`).addEventListener('click', async (event) => {
   console.log('hello')
-  const blob = await fetch(`${server}download/downloadlogs/${type}?type=${type}`).then((response) => response.blob());
+  const blob = await fetch(`${local}download/downloadlogs/${type}?type=${type}`).then((response) => response.blob());
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

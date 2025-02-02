@@ -149,9 +149,12 @@ class Logs extends Controller {
         $type = $data['type'];
         $model = new Model();
         $deleted_log = $model->logEvent($index, $type, 'delete');
+
         if ($deleted_log instanceof Exception) {
-          throw new Exception($deleted_log->getMessage());
+          print $deleted_log;
+          throw new Exception();
         } else {
+
           http_response_code(200);
           header('Content-Type: application/json');
           $response['result'] = $deleted_log;

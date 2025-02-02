@@ -138,7 +138,7 @@ class Logs_model {
     try {    $type = $this->log_type;
       $index = (int)$index;
       $index--;
-      if ($type === 'exception' || $type === 'errors') {
+      if ($type === 'exception' || $type === 'error') {
         $type = $type.'s';
       }
       define("ANY"."_LOG", LOGS."//$type//".date('mdy').".log");
@@ -154,8 +154,7 @@ class Logs_model {
         $row_count--;
         fclose($logFile);
         unset($logFile);
-        
-        if(isset($logsArray)) {
+        if(isset($logsArray)&&(count($logsArray)>1)) {
           $logFile = fopen(ANY_LOG, 'w');
           for ($J = $index; $J < $row_count - 1; $J++) {
             if ($logsArray[$J][0] !== '' && $logsArray[$J][1] !== '' && $logsArray[$J][2] !== '') {
@@ -178,8 +177,14 @@ class Logs_model {
             fclose($logFile);
             unset($logsArray);
             unset($logFIle);
-            return 'log deleted';
+            return 'log deleted'; 
           } 
+        } else {
+          $logFile = fopen(ANY_LOG, 'w');
+          fclose($logFile);
+          unset($logsArray);
+          unset($logFIle);
+          return 'log deleted'; 
         }
   
       }

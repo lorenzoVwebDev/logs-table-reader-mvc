@@ -150,7 +150,7 @@ class Logs extends Controller {
         $model = new Model();
         $deleted_log = $model->logEvent($index, $type, 'delete');
         if ($deleted_log instanceof Exception) {
-          throw new Excepction($deleted_log->getMessage());
+          throw new Exception($deleted_log->getMessage());
         } else {
           http_response_code(200);
           header('Content-Type: application/json');

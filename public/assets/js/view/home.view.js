@@ -2,7 +2,7 @@ import { appendTable } from '../utils/append.element.js';
 import { downloadLogFile } from '../services/download.logfile.js';
 import { deleteLog } from '../services/deleteLog.logfile.js';
 import { downloadTable } from '../services/download.table.js';
-
+//
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {

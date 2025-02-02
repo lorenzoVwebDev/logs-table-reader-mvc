@@ -1,4 +1,4 @@
-import { appendDelete } from '../utils/append.element';
+import { appendDelete } from '../utils/append.element.js';
 import { deleteLog } from './deleteLog.logfile.js';
 const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
 const local = 'http://logs-table-reader-mvc/public/'

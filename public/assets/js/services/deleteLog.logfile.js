@@ -1,4 +1,4 @@
-import { downloadTable2 } from './download.table';
+import { downloadTable2 } from './download.table.js';
 const server = 'https://apachebackend.lorenzo-viganego.com/logs-table-reader-mvc/public/';
 const local = 'http://logs-table-reader-mvc/public/'
 

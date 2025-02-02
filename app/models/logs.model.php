@@ -13,7 +13,7 @@ class Logs_model {
     try {
       $date = date('m.d.Y h:i:s');
       $error_log = $date." | User Error | ".$this->log_message."\n";
-      define('USER_ERROR_LOG', LOGS."\\exceptions\\". date('mdy').".log");
+      define('USER_ERROR_LOG', LOGS."//exceptions//". date('mdy').".log");
       error_log($error_log, 3, USER_ERROR_LOG);
 
       $logFile = fopen(LOGS."//exceptions//".date('mdy').".log", 'r'); 

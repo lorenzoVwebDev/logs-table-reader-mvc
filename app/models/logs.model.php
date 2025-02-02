@@ -133,4 +133,59 @@ class Logs_model {
       $e->getMessage();
     }
   }
+
+  function deleteLog(string|int $index) {
+    try {    $type = $this->log_type;
+      $index = (int)$index;
+      $index--;
+      if ($type === 'exception' || $type === 'errors') {
+        $type = $type.'s';
+      }
+      define(strtoupper($type)."_LOG", LOGS."//$type//".date('mdy').".log");
+      if (file_exists(EXCEPTIONS_LOG)) {
+        $logFile = fopen(EXCEPTIONS_LOG, 'r');
+        $logsArray = [];
+        $row_count = 0;
+        while (!feof($logFile)) {
+          $logsArray[$row_count] = explode(" | ", fgets($logFile));
+          $row_count++;
+        }
+        unset($logsArray[count($logsArray)-1]);
+        $row_count--;
+        fclose($logFile);
+        unset($logFile);
+        
+        if(isset($logsArray)) {
+          $logFile = fopen(EXCEPTIONS_LOG, 'w');
+          for ($J = $index; $J < $row_count - 1; $J++) {
+            if ($logsArray[$J][0] !== '' && $logsArray[$J][1] !== '' && $logsArray[$J][2] !== '') {
+              $logsArray[$J] = $logsArray[$J+1];
+            } else {
+              break;
+            }
+          }
+  
+          unset($logsArray[count($logsArray)-1]);
+          if (empty(array_filter($logsArray))) {
+            fwrite($logFile, '');
+            fclose($logFile);
+          } else {
+              $logFileString = '';
+            foreach($logsArray as $key => $value) {
+               $logFileString .=  trim($value[0]) . " | " . trim($value[1]). " | " . trim($value[2])."\n"; 
+            }
+            fwrite($logFile, $logFileString);
+            fclose($logFile);
+            unset($logsArray);
+            unset($logFIle);
+            return 'log deleted';
+          } 
+        }
+  
+      }
+    } catch (Exception $e) {
+      $message = $e->getMessage().$this->log_type." log has not been deleted";
+      return $message;
+    }
+}
 }

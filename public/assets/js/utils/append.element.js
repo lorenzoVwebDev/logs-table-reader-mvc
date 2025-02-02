@@ -1,4 +1,4 @@
-export function appendChild(response) {
+export function appendTable(response) {
   if (document.querySelector(`.${response.logType}-request-container`)) {
     document.querySelector(`.${response.logType}-request-container`).remove();
   }
@@ -31,7 +31,7 @@ export function appendDelete(table) {
   rowsArray.forEach((value, index) => {
     if (index != 0) {
       const newValue = document.createElement('td');
-      newValue.innerHTML = '<button class="delete-log">Delete</button>';
+      newValue.innerHTML = `<button class="delete-log" data-index="${index}">Delete</button>`;
       value.append(newValue)
     } else {
       const newValueHeader = document.createElement('th');

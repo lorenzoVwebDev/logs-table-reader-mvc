@@ -299,3 +299,24 @@
 .table-section .exception-table-container tr:hover, .table-section .error-table-container tr:hover, .table-section .access-table-container tr:hover {
   background-color: #ddd;
 }
+.table-section .exception-table-container .delete-log, .table-section .error-table-container .delete-log, .table-section .access-table-container .delete-log {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  border: none;
+  background-color: red;
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+  box-shadow: 2px 2px 8px gray;
+  font-size: calc(0.6vw + 0.6vh);
+  padding-right: calc(0.3vw + 0.3vh);
+  padding-left: calc(0.3vw + 0.3vh);
+  cursor: pointer;
+}
+.table-section .exception-table-container .delete-log:active, .table-section .error-table-container .delete-log:active, .table-section .access-table-container .delete-log:active {
+  background-color: white;
+  border: solid 1px red;
+  color: red;
+}

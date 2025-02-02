@@ -137,7 +137,45 @@ class Logs extends Controller {
         echo "Error 500: We are sorry, we are going to resolve the issue as soon as possible";
       }
     }
-      
+  }
 
+  function deletelog() {
+    try {
+    //to handle application/json requests you have to handle it like that
+      $json = file_get_contents('php://input');
+      $data = json_decode($json, true);
+      if (isset($data['index']) && isset($data['type'])) {
+        $index = $data['index'];
+        $type = $data['type'];
+        $model = new Model();
+        $deleted_log = $model->logEvent($index, $type, 'delete');
+        if ($deleted_log instanceof Exception) {
+          throw new Excepction($deleted_log->getMessage());
+        } else {
+          http_response_code(200);
+          header('Content-Type: application/json');
+          $response['result'] = $deleted_log;
+          $response['status'] = 200;
+          echo json_encode($response);
+        }
+      } else {
+        throw new Exception('deleted log index or data has not been specified');
+      }
+    } catch (Exception $e) {
+      if ($e->getMessage() === 'deleted log index or data has not been specified') {
+        http_response_code(401);
+        header('Content-Type: application/json');
+        $response['result'] = 'index and type must be specified';
+        $response['status'] = 401;
+        echo json_encode($response);
+      } else {
+        http_response_code(500);
+        header('Content-Type: application/json');
+        $response['result'] = $e->getMessage();
+        $response['status'] = 500;
+        echo json_encode($response);
+      }
+
+    }
   }
 }
